@@ -1,0 +1,118 @@
+{
+    "sandwichs": [
+        {
+            "id": 1,
+            "names": "Le Parisien",
+            "ingredients": [
+                1,
+                2,
+                3
+            ],
+            "unitPrice": 3.00
+        }
+    ],
+    "ingredients": [
+        {
+            "id": 1,
+            "name": "pain",
+            "type": "pain"
+        },
+        {
+            "id": 2,
+            "name": "gruyère",
+            "type": "fromage"
+        },
+        {
+            "id": 3,
+            "name": "jambon",
+            "type": "viande"
+        },
+        {
+            "id": 4,
+            "name": "oeuf",
+            "type": "oeuf"
+        }
+    ],
+    "drinks": [
+        {
+            "id": 1,
+            "name": "Evian",
+            "type": "eau",
+            "contenant": "bouteille",
+            "size": "50cl"
+        },
+        {
+            "id": 2,
+            "name": "Coca-Cola",
+            "type": "soda",
+            "contenant": "canette",
+            "size": "33cl"
+        }
+    ],
+    "desserts": [
+        {
+            "id": 1,
+            "name": "Flan nature",
+            "ingredients": [
+                4
+            ]
+        }
+    ],
+    "menus": [
+        {
+            "id": 1,
+            "name": "Le complet",
+            "components": [
+                1,
+                2,
+                3
+            ],
+            "price": 7.90
+        }
+    ],
+    "menuComponents": [
+        {
+            "id": 1,
+            "name": "sandwichs"
+        },
+        {
+            "id": 2,
+            "name": "drinks"
+        },
+        {
+            "id": 3,
+            "name": "desserts"
+        }
+    ],
+    "customers": [
+        {
+            "id": 1,
+            "idCustomer": "123456789ABCDEF",
+            "name": "Dimitri Talvard",
+            "mail": "dimitri.talvard@netapsys.fr"
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "idOrder": "9876543210",
+            "idCustomer": "123456789ABCDEF",
+            "totalPrice": 15.8,
+            "state": 1
+        }
+    ],
+    "orderState": [
+        {
+            "id": 1,
+            "stateName": "Attente préparation" 
+        },
+        {
+            "id": 2,
+            "stateName": "Préparé" 
+        },
+        {
+            "id": 3,
+            "stateName": "Terminée" 
+        }
+    ]
+}
