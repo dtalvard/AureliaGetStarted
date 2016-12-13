@@ -2,7 +2,7 @@ define('app',["require", "exports"], function (require, exports) {
     "use strict";
     var App = (function () {
         function App() {
-            this.message = 'Hello World!';
+            this.heading = "Todos";
         }
         return App;
     }());
@@ -48,5 +48,17 @@ define('resources/index',["require", "exports"], function (require, exports) {
     exports.configure = configure;
 });
 
-define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${message}</h1>\n</template>\n"; });
+define('todo',["require", "exports"], function (require, exports) {
+    "use strict";
+    var Todo = (function () {
+        function Todo(description) {
+            this.description = description;
+            this.done = false;
+        }
+        return Todo;
+    }());
+    exports.Todo = Todo;
+});
+
+define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${heading}</h1>\n</template>\n"; });
 //# sourceMappingURL=app-bundle.js.map
