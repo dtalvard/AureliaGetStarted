@@ -1,17 +1,13 @@
 <template>
-  <h1>${heading}</h1>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <ul>
+        <li repeat.for="row of router.navigation">
+          <a href.bind="row.href">${row.title}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-  <form submit.trigger="addTodo()">
-    <input type="text" value.bind="todoDescription" />
-    <button type="submit">Add Todo</button>
-  </form>
-
-  <ul>
-    <li repeat.for="todo of todos">
-      <input type="checkbox" checked.bind="todo.done" />
-      <span css="text-decoration: ${todo.done ? 'line-through' : 'none'}">${todo.description}</span>
-      <button click.trigger="removeTodo(todo)">Remove</button>
-    </li>
-  </ul>
-
+  <router-view></router-view>
 </template>

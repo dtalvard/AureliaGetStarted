@@ -1,27 +1,16 @@
-import { Todo } from './todo';
+import * as router from 'aurelia-router';
 
 export class App {
-  private heading: string;
-  private todoDescription: string;
-  private todos: Todo[];
+  private router: router.RouteConfig;
 
-  constructor() {
-    this.heading = "Todos";
-    this.todoDescription = '';
-    this.todos = [];
-  };
-
-  addTodo() {
-    if (this.todoDescription) {
-      this.todos.push(new Todo(this.todoDescription));
-      this.todoDescription = '';
-    }
-  };
-
-  removeTodo(todo) {
-    let index = this.todos.indexOf(todo);
-    if (index !== -1) {
-      this.todos.splice(index, 1);
-    }
-  };
+  configureRouter(config, router: router.RouteConfig) {
+    this.router = router;
+    config.title = 'Aurelia';
+    config.options.root = '/';
+    config.map([
+      { route: ['', 'home'], name: 'home', moduleId: './home/home', nav: true, title: 'Home' },
+      { route: 'todos', name: 'todo', moduleId: './todo/todoApp', nav: true, title: 'TODO' },
+      { route: 'httpTest', name: 'httpTest', moduleId: './httpTest/httpTest', nav: true, title: 'HttpTest'}
+    ]);
+  }
 }
