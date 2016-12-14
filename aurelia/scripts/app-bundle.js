@@ -1,9 +1,38 @@
-define('app',["require", "exports"], function (require, exports) {
+define('todo',["require", "exports"], function (require, exports) {
+    "use strict";
+    var Todo = (function () {
+        function Todo(description) {
+            this.description = description;
+            this.done = false;
+        }
+        return Todo;
+    }());
+    exports.Todo = Todo;
+});
+
+define('app',["require", "exports", "./todo"], function (require, exports, todo_1) {
     "use strict";
     var App = (function () {
         function App() {
             this.heading = "Todos";
+            this.todoDescription = '';
+            this.todos = [];
         }
+        ;
+        App.prototype.addTodo = function () {
+            if (this.todoDescription) {
+                this.todos.push(new todo_1.Todo(this.todoDescription));
+                this.todoDescription = '';
+            }
+        };
+        ;
+        App.prototype.removeTodo = function (todo) {
+            var index = this.todos.indexOf(todo);
+            if (index !== -1) {
+                this.todos.splice(index, 1);
+            }
+        };
+        ;
         return App;
     }());
     exports.App = App;
@@ -48,17 +77,5 @@ define('resources/index',["require", "exports"], function (require, exports) {
     exports.configure = configure;
 });
 
-define('todo',["require", "exports"], function (require, exports) {
-    "use strict";
-    var Todo = (function () {
-        function Todo(description) {
-            this.description = description;
-            this.done = false;
-        }
-        return Todo;
-    }());
-    exports.Todo = Todo;
-});
-
-define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${heading}</h1>\n</template>\n"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <h1>${heading}</h1>\n\n  <form submit.trigger=\"addTodo()\">\n    <input type=\"text\" value.bind=\"todoDescription\" />\n    <button type=\"submit\">Add Todo</button>\n  </form>\n\n  <ul>\n    <li repeat.for=\"todo of todos\">\n      <input type=\"checkbox\" checked.bind=\"todo.done\" />\n      <span css=\"text-decoration: ${todo.done ? 'line-through' : 'none'}\">${todo.description}</span>\n      <button click.trigger=\"removeTodo(todo)\">Remove</button>\n    </li>\n  </ul>\n\n</template>\n"; });
 //# sourceMappingURL=app-bundle.js.map

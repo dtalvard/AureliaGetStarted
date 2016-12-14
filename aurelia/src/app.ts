@@ -18,9 +18,9 @@ export class App {
     }
   };
 
-  removeTodo() {
+  removeTodo(todo) {
     let index = this.todos.indexOf(todo);
-    if (index == -1) {
+    if (index !== -1) {
       this.todos.splice(index, 1);
     }
   };
